@@ -11,5 +11,11 @@ const blogSchema = new mongoose.Schema({
   }
 })
 
+blogSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    delete returnedObject.__v;
+  },
+});
+
 const Blog = mongoose.model('Blog', blogSchema)
 module.exports = Blog
